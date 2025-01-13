@@ -4,9 +4,9 @@
   padding: 1.4rem 1rem;
   background-color: var(--color-bg-dark);
 }
-.form.darkmode {
+/* .form.darkmode {
   background-color: var(--color-darkmode);
-}
+} */
 .input {
   flex: 1 0 auto; /* input부분을 크게 키워줌 */
   font-size: 1.4rem;

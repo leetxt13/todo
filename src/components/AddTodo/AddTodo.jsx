@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { v4 as uuid4 } from 'uuid';
 import styles from './AddTodo.module.css';
 
-export default function AddTodo({ onAdd, darkmode }) {
+export default function AddTodo({ onAdd }) {
   const [text, setText] = useState(''); // form을 uncontrol에서 control폼으로 만들기 위함
   const handleChange = (e) => {
     setText(e.target.value);
@@ -18,10 +18,7 @@ export default function AddTodo({ onAdd, darkmode }) {
   };
   return (
     <>
-      <form
-        className={`${styles.form} ${darkmode === true && styles.darkmode} `}
-        onSubmit={handleSubmit}
-      >
+      <form className={styles.form} onSubmit={handleSubmit}>
         <input
           className={styles.input}
           type="text"

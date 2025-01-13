@@ -1,16 +1,12 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import AddTodo from '../AddTodo/AddTodo';
-import { v4 as uuid4v } from 'uuid';
+// import { v4 as uuid4v } from 'uuid';
 import Todo from '../Todo/Todo';
 import styles from './TodoList.module.css';
-import { useDarkMode } from '../context/DarkModeContext';
 
 export default function TodoList({ filter }) {
-  const { darkMode } = useDarkMode();
-  const [todos, setTodos] = useState([
-    { id: uuid4v(), text: '장보기', status: 'active' },
-    { id: uuid4v(), text: '공부하기', status: 'active' },
-  ]);
+  const [todos, setTodos] = useState([readTodosFromLocalStorage()]);
+
   const handleAdd = (todo) => {
     setTodos([...todos, todo]);
   };
@@ -20,12 +16,14 @@ export default function TodoList({ filter }) {
   const handleDelete = (deleted) => {
     setTodos(todos.filter((todo) => todo.id !== deleted.id));
   };
+  useEffect(() => {
+    localStorage.setItem('todos', JSON.stringify(todos));
+  }, [todos]);
+
   // 새로운 todo를 todos에 업데이트 해야한다.
   const filtered = getFilteredItems(todos, filter); // filtered된 todo만 설정된 변수
   return (
-    <section
-      className={`${styles.container} ${darkMode === true && styles.darkmode}`}
-    >
+    <section className={styles.container}>
       <ul className={styles.list}>
         {filtered.map((item) => (
           <Todo
@@ -36,13 +34,18 @@ export default function TodoList({ filter }) {
           />
         ))}
       </ul>
-      <AddTodo onAdd={handleAdd} darkmode={darkMode} />
+      <AddTodo onAdd={handleAdd} />
     </section>
   );
-}
-function getFilteredItems(todos, filter) {
-  if (filter === 'all') {
-    return todos;
+  function readTodosFromLocalStorage() {
+    console.log('readTodosFromLocalStorage');
+    const data = localStorage.getItem('todos');
+    return data ? JSON.parse(data) : [];
   }
-  return todos.filter((todo) => todo.status === filter);
+  function getFilteredItems(todos, filter) {
+    if (filter === 'all') {
+      return todos;
+    }
+    return todos.filter((todo) => todo.status === filter);
+  }
 }
