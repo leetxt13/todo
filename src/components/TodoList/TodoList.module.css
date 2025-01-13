@@ -6,6 +6,9 @@
   min-height: 0;
   /* 리스트 아이템이 많아지면 header가 사라지는 현상 없애줌(기본 min-height 100%) */
 }
+.container.darkmode {
+  background-color: var(--color-darkmode);
+}
 .list {
   flex: 1 1 auto;
   overflow-y: auto; /* list가 길어지면 스크롤이 생김 */

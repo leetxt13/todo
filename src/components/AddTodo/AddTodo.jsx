@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { v4 as uuid4 } from 'uuid';
 import styles from './AddTodo.module.css';
 
-export default function AddTodo({ onAdd }) {
+export default function AddTodo({ onAdd, darkmode }) {
   const [text, setText] = useState(''); // form을 uncontrol에서 control폼으로 만들기 위함
   const handleChange = (e) => {
     setText(e.target.value);
@@ -17,8 +17,11 @@ export default function AddTodo({ onAdd }) {
     setText(''); // text 입력후 내용이 남아있는 것을 없애줌
   };
   return (
-    <div>
-      <form className={styles.form} onSubmit={handleSubmit}>
+    <>
+      <form
+        className={`${styles.form} ${darkmode === true && styles.darkmode} `}
+        onSubmit={handleSubmit}
+      >
         <input
           className={styles.input}
           type="text"
@@ -29,6 +32,6 @@ export default function AddTodo({ onAdd }) {
         <label htmlFor=""></label>
         <button className={styles.button}>Add</button>
       </form>
-    </div>
+    </>
   );
 }

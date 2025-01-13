@@ -1,6 +1,6 @@
 import React from 'react';
-import { FaTrashAlt } from 'react-icons/fa';
 import styles from './Todo.module.css';
+import { BsArchiveFill } from 'react-icons/bs';
 export default function Todo({ todo, onUpdate, onDelete }) {
   const { text, status } = todo;
   const handleChange = (e) => {
@@ -26,7 +26,7 @@ export default function Todo({ todo, onUpdate, onDelete }) {
       </label>
       <span className={styles.icon}>
         <button onClick={handleDelete} className={styles.button}>
-          <FaTrashAlt />
+          <BsArchiveFill />
         </button>
       </span>
     </li>

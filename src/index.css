@@ -6,6 +6,7 @@
   --color-accent: #f16e03;
   --color-white: white;
   --color-scrollbar: #aaa7a7;
+  --color-darkmode: rgba(18, 19, 1, 0.664);
 }
 
 body {

@@ -64,7 +64,7 @@
     "build": "node scripts/build.js",
     "test": "node scripts/test.js"
   },
-  "homepage":"https://todoplease.netlify.app/",
+  "homepage": "https://todoplease.netlify.app/",
   "eslintConfig": {
     "extends": [
       "react-app",
