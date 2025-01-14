@@ -82,3 +82,10 @@ button {
 ::-webkit-scrollbar-thumb:hover {
   background-color: var(--color-accent);
 }
+
+@media screen and (max-width: 768px) {
+  #root {
+    width: 23rem;
+    height: 43rem;
+  }
+}
